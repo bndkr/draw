@@ -45,6 +45,7 @@
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.c_canvasGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -135,10 +136,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.ImageLocation = "";
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(745, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(157, 80);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
             this.pictureBox1.TabIndex = 3;
@@ -148,13 +150,14 @@
             // c_canvasGroupBox
             // 
             this.c_canvasGroupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.c_canvasGroupBox.Controls.Add(this.pictureBox1);
             this.c_canvasGroupBox.Location = new System.Drawing.Point(23, 52);
             this.c_canvasGroupBox.Name = "c_canvasGroupBox";
             this.c_canvasGroupBox.Size = new System.Drawing.Size(711, 366);
             this.c_canvasGroupBox.TabIndex = 4;
             this.c_canvasGroupBox.TabStop = false;
-            this.c_canvasGroupBox.Click += new System.EventHandler(this.c_canvasGroupBox_Click);
-            
+            this.c_canvasGroupBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.c_canvasGroupBox_Click);
+            this.c_canvasGroupBox.Enter += new System.EventHandler(this.c_canvasGroupBox_Enter);
             // 
             // Form1
             // 
@@ -162,7 +165,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 443);
             this.Controls.Add(this.c_canvasGroupBox);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -176,6 +178,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.c_canvasGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

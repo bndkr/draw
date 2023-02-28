@@ -3,6 +3,7 @@ namespace DrawApp
     public partial class Form1 : Form
     {
         private int m_selectedTool = 0;
+        private List<DrawObject> m_drawObjects= new List<DrawObject>();
 
         public Form1()
         {
@@ -40,9 +41,18 @@ namespace DrawApp
 
         }
 
-        private void c_canvasGroupBox_Click(object sender, EventArgs e)
+        private void c_canvasGroupBox_Click(object sender, MouseEventArgs e)
         {
-            
+            var cookie = Cookie.CreateCookie(e.Location.X, e.Location.Y, 1, c_canvasGroupBox);
+            m_drawObjects.Add(cookie);
+            this.Controls.Add(cookie);
+            c_canvasGroupBox.SendToBack();
+            c_statusLabel.Text = $"x: {e.Location.X}, y: {e.Location.Y}";
+        }
+
+        private void c_canvasGroupBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
