@@ -24,14 +24,17 @@ namespace DrawApp
 
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.Location = new System.Drawing.Point(m_xpos, m_ypos);
-            this.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            this.Image = (System.Drawing.Image)resources.GetObject(name + ".Image");
             this.Size = new System.Drawing.Size(40, 40);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
         }
 
-        public static void DeleteDrawable(DrawObject drawObject, Control parent)
+        public static void DeleteDrawable(DrawObject? drawObject, Control parent)
         {
-            parent.Controls.Remove(drawObject);
+            if (drawObject != null)
+            {
+                parent.Controls.Remove(drawObject);
+            }
         }
 
         public int m_xpos { get; set; }
@@ -58,5 +61,104 @@ namespace DrawApp
             return cookie;
         }
         
+    }
+
+    public class FishSticks : DrawObject
+    {
+        protected FishSticks() : base() { }
+        protected FishSticks(int xpos, int ypos, float scale, string name) : base(xpos, ypos, scale, name)
+        {
+        }
+
+        // Factory pattern
+        public static FishSticks CreateFishSticks(int xpos, int ypos, float scale, Control parent)
+        {
+            var fishsticks = new FishSticks(xpos, ypos, scale, "fishsticks");
+
+            parent.Controls.Add(fishsticks);
+            parent.SendToBack();
+
+            return fishsticks;
+        }
+
+    }
+
+    public class Cup : DrawObject
+    {
+        protected Cup() : base() { }
+        protected Cup(int xpos, int ypos, float scale, string name) : base(xpos, ypos, scale, name)
+        {
+        }
+
+        // Factory pattern
+        public static Cup CreateCup(int xpos, int ypos, float scale, Control parent)
+        {
+            var cup = new Cup(xpos, ypos, scale, "cup");
+
+            parent.Controls.Add(cup);
+            parent.SendToBack();
+
+            return cup;
+        }
+
+    }
+    public class Cat : DrawObject
+    {
+        protected Cat() : base() { }
+        protected Cat(int xpos, int ypos, float scale, string name) : base(xpos, ypos, scale, name)
+        {
+        }
+
+        // Factory pattern
+        public static Cat CreateCat(int xpos, int ypos, float scale, Control parent)
+        {
+            var cat = new Cat(xpos, ypos, scale, "cat");
+
+            parent.Controls.Add(cat);
+            parent.SendToBack();
+
+            return cat;
+        }
+
+    }
+
+    public class Strawberry : DrawObject
+    {
+        protected Strawberry() : base() { }
+        protected Strawberry(int xpos, int ypos, float scale, string name) : base(xpos, ypos, scale, name)
+        {
+        }
+
+        // Factory pattern
+        public static Strawberry CreateStrawberry(int xpos, int ypos, float scale, Control parent)
+        {
+            var strawberry = new Strawberry(xpos, ypos, scale, "strawberry");
+
+            parent.Controls.Add(strawberry);
+            parent.SendToBack();
+
+            return strawberry;
+        }
+
+    }
+
+    public class Sigma : DrawObject
+    {
+        protected Sigma() : base() { }
+        protected Sigma(int xpos, int ypos, float scale, string name) : base(xpos, ypos, scale, name)
+        {
+        }
+
+        // Factory pattern
+        public static Sigma CreateSigma(int xpos, int ypos, float scale, Control parent)
+        {
+            var sigma = new Sigma(xpos, ypos, scale, "sigma");
+
+            parent.Controls.Add(sigma);
+            parent.SendToBack();
+
+            return sigma;
+        }
+
     }
 }
