@@ -3,11 +3,11 @@ namespace DrawApp
     public partial class Form1 : Form
     {
         private int m_selectedTool = 0;
-        private List<DrawObject> m_drawObjects= new List<DrawObject>();
-
+        private CommandStack m_commandStack = new CommandStack();
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -43,16 +43,21 @@ namespace DrawApp
 
         private void c_canvasGroupBox_Click(object sender, MouseEventArgs e)
         {
-            var cookie = Cookie.CreateCookie(e.Location.X, e.Location.Y, 1, c_canvasGroupBox);
-            m_drawObjects.Add(cookie);
-            this.Controls.Add(cookie);
-            c_canvasGroupBox.SendToBack();
-            c_statusLabel.Text = $"x: {e.Location.X}, y: {e.Location.Y}";
+            switch (m_selectedTool)
+            {
+                case 0: break; // 'none' tool
+                case 1: m_commandStack.DoCommand(new DrawCommand(e.Location.X, e.Location.Y, 1.0f, c_canvasGroupBox, "cookie")); break;
+            }
         }
 
         private void c_canvasGroupBox_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_commandStack.UndoLastCommand();
         }
     }
 }
