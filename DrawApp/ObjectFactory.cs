@@ -65,6 +65,7 @@ namespace DrawApp
       {
         CommandStack.DoCommand(new DeleteCommand(this));
       }
+      
     }
 
     public void DeleteDrawable()
